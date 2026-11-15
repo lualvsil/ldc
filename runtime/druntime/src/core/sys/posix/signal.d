@@ -1782,9 +1782,9 @@ else version (CRuntime_Bionic)
         return 0;
     }
 
-    int sigemptyset(sigset_t* set) { memset(set, 0, (*set).sizeof); return 0; }
+    int sigemptyset(sigset_t* set) { memset(set, 0, 8); return 0; }
 
-    int sigfillset(sigset_t* set) { memset(set, ~0, (*set).sizeof); return 0; }
+    int sigfillset(sigset_t* set) { memset(set, ~0, 8); return 0; }
 
     int sigismember(sigset_t* set, int signum)
     {
