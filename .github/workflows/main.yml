@@ -3,6 +3,7 @@
 name: Main
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches-ignore:
       - 'merge-*' # don't run on pushes to merge-X.Y.Z branches, they are usually PRs
