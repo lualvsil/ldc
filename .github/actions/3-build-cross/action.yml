@@ -114,6 +114,7 @@ runs:
         cmakeFlags+=" -DCMAKE_TOOLCHAIN_FILE=$PWD/android-ndk/build/cmake/android.toolchain.cmake"
         cmakeFlags+=" -DANDROID_USE_LEGACY_TOOLCHAIN_FILE=OFF"
         cmakeFlags+=" -DLDC_LINK_MANUALLY=ON -DD_LINKER_ARGS='-L$PWD/install/lib;-lphobos2-ldc;-ldruntime-ldc'"
+        cmakeFlags+=" D_EXTRA_FLAGS=-mtriple=aarch64-linux-android30"
 
         echo "DFLAGS=-mtriple=$triple -L-L$PWD/install/lib -gcc=$PWD/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/$triple-clang" >> $GITHUB_ENV
         echo "CROSS_TRIPLE=$triple" >> $GITHUB_ENV
