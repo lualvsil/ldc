@@ -114,7 +114,10 @@ void IrGlobal::declare() {
   // Set the alignment (it is important not to use type->alignsize because
   // VarDeclarations can have an align() attribute independent of the type
   // as well).
-  gvar->setAlignment(llvm::MaybeAlign(DtoAlignment(V)));
+  unsigned alignment = DtoAlignment(V);
+  if (V->isThreadlocal() && global.params.targetTriple->getEnvironment() == llvm::Triple::Android && alignment < 64)
+    alignment = 64;
+  gvar->setAlignment(llvm::MaybeAlign(alignment));
 
   applyVarDeclUDAs(V, gvar);
 
