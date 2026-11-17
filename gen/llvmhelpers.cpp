@@ -150,7 +150,6 @@ unsigned DtoAlignment(Type *type) {
 }
 
 unsigned DtoAlignment(VarDeclaration *vd) {
-  return 64;
   const unsigned typeAlignment = DtoAlignment(vd->type);
   if (vd->alignment.isDefault())
     return typeAlignment;
